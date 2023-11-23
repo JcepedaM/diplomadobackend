@@ -12,9 +12,7 @@ use App\Http\Controllers\API\PersonaController;
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
-|asasasas
-
-pruebaaaaaaaaaaaaaaa
+|
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -26,5 +24,10 @@ Route::prefix('v1/personas')->group(function () {
     Route::get('/',[ PersonaController::class, 'get']);
     Route::post('/',[ PersonaController::class, 'create']);
     Route::get('/{id}',[ PersonaController::class, 'getById']);
+    Route::put('/{id}',[ PersonaController::class, 'update']);
+    Route::delete('/{id}',[ PersonaController::class, 'delete']);
+
+
+
  });
  
