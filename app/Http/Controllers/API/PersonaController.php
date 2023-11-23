@@ -51,4 +51,32 @@ class PersonaController extends Controller
     }
 
 
+    public function getById($id){
+
+        try{
+
+            $data = Persona :: find($id);
+            return response()->json($data,200);
+
+        }
+        catch (\Throwable $th){
+            
+                return response()->json(['error'=>$th->getMessage(),500]);
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
