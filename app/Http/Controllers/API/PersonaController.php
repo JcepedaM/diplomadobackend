@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Persona;
+use App\Models\Persona;
 
 class PersonaController extends Controller
 {
@@ -23,7 +23,7 @@ class PersonaController extends Controller
 
         }catch (\Throwable $th){
 
-            return response()->json(['error' => $th ->getMesssage()],500);
+            return response()->json(['error' => $th ->getMessage()],500);
 
         }
 
@@ -31,16 +31,24 @@ class PersonaController extends Controller
 
     }
 
+    public function create(Request $request){
+
+        try{
+
+            $data['nombre']=$request['nombre'];
+            $data['direccion']=$request['direccion'];
+            $data['telefono']=$request['telefono'];
+            $res=Persona ::create($data);
+            return response()->json($res,200);
+
+        }
+        catch (\Throwable $th){
+            
+                return response()->json(['error'=>$th->getMessage(),500]);
+        }
 
 
-
-
-
-
-
-
-
-
+    }
 
 
 }
